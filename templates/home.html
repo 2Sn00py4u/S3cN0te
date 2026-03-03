@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block csscripts %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock csscripts %}
+
+{% block navtabs %}
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="https://github.com/2Sn00py4u/S3cN0te">
+                <img src="{{ url_for('static', filename='assets/icons/github/GitHub_Invertocat_White.png') }}" alt="Logo" width="24" height="24" class="d-inline-block align-text-bottom">
+                GitHub
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-i18n="navUser" href="/user">User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <li class="nav-item" style="margin-left: 2%;">
+            <a class="nav-link" data-i18n="lang" id="langSwitch"></a>
+        </li>
+    </ul>
+{% endblock navtabs %}
+
+{% block content %}
+    <div style="display: flex; height: 100vh;">
+        <div data-bs-theme="dark" class="menu-frame">
+            <div class="list-group list-group-horizontal fakelink" style="width: 95%; flex-shrink: 0;">
+                <a href="/edit/new" class="list-group-item">
+                    <img src="{{ url_for('static', filename='assets/icons/application/newfile.png') }}" alt="Logo" width="50px" height="50px">
+                </a>
+                <a href="/edit/new" class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" data-i18n="sideHeaderNew"></h5>
+                    </div>
+                    <p class="mb-1" data-i18n="sideBodyNew"></p>
+                </a>
+            </div>
+            <div class="list-group list-group-horizontal fakelink" style="width: 95%; flex-shrink: 0;">
+                <a class="list-group-item" data-bs-toggle="modal" data-bs-target="#openModal">
+                    <img src="{{ url_for('static', filename='assets/icons/application/openfile.png') }}" alt="Logo" width="50px" height="50px">
+                </a>
+                <a class="list-group-item" data-bs-toggle="modal" data-bs-target="#openModal">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" data-i18n="sideHeaderOpen"></h5>
+                    </div>
+                    <p class="mb-1" data-i18n="sideBodyOpen"></p>
+                </a>
+            </div>
+            <div class="list-group list-group-horizontal fakelink" style="width: 95%; flex-shrink: 0;">
+                <a href="https://github.com/2Sn00py4u/S3cN0te/blob/main/CreateSecNotes.md" class="list-group-item">
+                    <img src="{{ url_for('static', filename='assets/icons/github/GitHub_Invertocat_White.png') }}" alt="Logo" width="50px" height="50px">
+                </a>
+                <a href="https://github.com/2Sn00py4u/S3cN0te/blob/main/CreateSecNotes.md" class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" data-i18n="sideHeaderHelp"></h5>
+                    </div>
+                    <p class="mb-1" data-i18n="sideBodyHelp"></p>
+                </a>
+            </div>
+        </div>
+        <div class="page-frame">
+            <a href="/edit/new" class="container" style="text-decoration: none;">
+                <div data-bs-theme="dark" class="page"> 
+                    <h2 id="create-new-note-header"></h2>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="openModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-theme="dark" style="color: #fffcf8;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="openModalLabel" data-i18n="modalHeaderOpen"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 input-group-lg">
+                    <label for="filePathInput" class="form-label" data-i18n="modalBodyPath"></label>
+                    <input type="text" class="form-control" id="filePathInput" placeholder="a-z, A-Z, 0-9, -_. /" required>
+                </div>
+                <div class="mb-3 input-group-lg">
+                    <label for="encKeyInput" class="form-label" data-i18n="modalBodyKey"></label>
+                    <input type="text" class="form-control" id="encKeyInput" placeholder="a-z, A-Z, 0-9, _" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="modalFooterClose"></button>
+                <button type="button" class="btn btn-primary disabled" id="openButton" data-i18n="modalFooterOpen"></button>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block jscripts %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock jscripts %}

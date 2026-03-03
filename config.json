@@ -1,0 +1,6 @@
+{
+    "dbpath": "data/s3cn0te.duckdb",
+    "outpath": "downloads",
+    "host": "localhost",
+    "port": 55555
+}
