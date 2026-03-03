@@ -25,10 +25,12 @@ function initOpenFunc() {
 
     openButton.addEventListener("click", async function(e){
         e.preventDefault();
-
+        let signed = document.getElementById("signedCheck").checked;
+        console.log(signed);
         const data = {
             path: filePathInput.value,
-            key: encKeyInput.value
+            key: encKeyInput.value,
+            signed: signed
         };
 
         try {
@@ -84,6 +86,7 @@ const translations = {
             modalHeaderOpen: "Open Note",
             modalBodyPath: "Path",
             modalBodyKey: "Key",
+            modalOpenSigned: "Signed",
             modalFooterClose: "Close",
             modalFooterOpen: "Open"
         }, 
@@ -100,6 +103,7 @@ const translations = {
             modalHeaderOpen: "Note öffnen",
             modalBodyPath: "Pfad",
             modalBodyKey: "Schlüssel",
+            modalOpenSigned: "Signiert",
             modalFooterClose: "Abbrechen",
             modalFooterOpen: "Öffnen"
         }

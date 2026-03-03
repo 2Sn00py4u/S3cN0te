@@ -9,6 +9,7 @@ from util.crypting import Cryptor
 import string
 import secrets
 import base64 as b64
+import hashlib
 
 CONFIGPATH = plib.Path("config.json")
 DBPATH = plib.Path("data/s3cn0te.duckdb")
@@ -421,7 +422,13 @@ class API:
                                 raise ValueError("No JSON data received")
                             
                             pages_list = data["pages_list"]
-                            secnote = fileUtil.SecNote(plib.Path(f"{OUTPATH}/{data['name']}.secnote"), pages_list, data["key"])
+                            if data["signed"]:
+                                username = session["user"]
+                                password = self.cryptor.decrypting(b64.decodebytes(session["pass"]), session["key"])
+                                signation = hashlib.sha256(f"{username}_{password}".encode()).hexdigest()
+                            else:
+                                signation = ""
+                            secnote = fileUtil.SecNote(plib.Path(f"{OUTPATH}/{data['name']}.secnote"), pages_list, hashlib.md5(f'{data["key"]}{signation}'.encode()).hexdigest())
                             if secnote.save():
                                 return jsonify({"status": "success", "valid": True, "path": str(secnote.get_path().absolute())}), 200
                             return jsonify({"error": "couldn't save secnote"}), 500
@@ -500,7 +507,13 @@ class API:
                             
                             path = plib.Path(data["path"])
                             key = data["key"]
-                            secnote = fileUtil.SecNote(path, {}, key)
+                            if data["signed"]:
+                                username = session["user"]
+                                password = self.cryptor.decrypting(b64.decodebytes(session["pass"]), session["key"])
+                                signation = hashlib.sha256(f"{username}_{password}".encode()).hexdigest()
+                            else:
+                                signation = ""
+                            secnote = fileUtil.SecNote(path, {}, hashlib.md5(f'{key}{signation}'.encode()).hexdigest())
                             self.__secnote_content = secnote.read()
                             if not self.__secnote_content:
                                 return jsonify({"status": "success", "valid": False, "error": str(e)}), 200

@@ -256,11 +256,13 @@ function initSaveFunc() {
 
     saveButton.addEventListener("click", async function(e){
         e.preventDefault();
-
+        let signed = document.getElementById("signedCheck").checked;
+        console.log(signed);
         const data = {
             name: fileNameInput.value,
             key: encKeyInput.value,
-            pages_list: pages_list
+            pages_list: pages_list,
+            signed: signed
         };
 
         try {
@@ -334,6 +336,7 @@ const translations = {
             sideHelpBody: "View help documentation.",
             modalSaveHeader: "Save Note",
             modalSaveKey: "Key",
+            modalSaveSigned: "Signed",
             modalSaveCancel: "Cancel",
             modalSaveSave: "Save"
         }, 
@@ -351,6 +354,7 @@ const translations = {
             sideHelpBody: "Zur Dokumentation.",
             modalSaveHeader: "Note speichern",
             modalSaveKey: "Schlüssel",
+            modalSaveSigned: "Signiert",
             modalSaveCancel: "Abbrechen",
             modalSaveSave: "Speichern"
             

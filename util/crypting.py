@@ -19,12 +19,18 @@ class Cryptor:
         """         
         byte_password = bytes(password, self.encoding)
         byte_key = bytes(key, self.encoding)
-        encryption_key = pad(byte_key, AES.block_size)
+        if len(byte_key) < 32:
+            encryption_key = pad(byte_key, AES.block_size)
+        elif len(byte_key) == 32:
+            encryption_key = byte_key
+        else:
+            encryption_key = byte_key[:32]
         
         if self.blockdecryption == "ECB":
             try:
                 cipher = AES.new(encryption_key, AES.MODE_ECB)
             except Exception as e:
+                print(len(encryption_key))
                 raise Exception(f"an error accured, make shure, to use the right key\nerror:{e}")
         else:
             raise Exception("other than ECB not done yet...")
@@ -44,7 +50,12 @@ class Cryptor:
         Erg.: Entschlüsseltes Passwort wird als String-Objekt zurückgegeben
         """
         byte_key = bytes(key, self.encoding)
-        encryption_key = pad(byte_key, AES.block_size)
+        if len(byte_key) < 32:
+            encryption_key = pad(byte_key, AES.block_size)
+        elif len(byte_key) == 32:
+            encryption_key = byte_key
+        else:
+            encryption_key = byte_key[:32]
         
         if self.blockdecryption == "ECB":
             try:
