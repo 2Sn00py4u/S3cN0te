@@ -14,6 +14,9 @@ Additionally, you can convert these slide-like notes into presentable file forma
 
 ## Installation
 
+Download the [latest released](https://github.com/2Sn00py4u/S3cN0te/releases) binary or install via ``python -m venv``:  
+> Note use Python >= 3.12.5
+
 ```bash
 python -m venv .venv
 
