@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block navtabs %}
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="https://github.com/2Sn00py4u/S3cN0te">
+                <img src="{{ url_for('static', filename='assets/icons/github/GitHub_Invertocat_White.png') }}" alt="Logo" width="24" height="24" class="d-inline-block align-text-bottom">
+                GitHub
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" data-i18n="navUser" href="/user">User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <li class="nav-item" style="margin-left: 2%;">
+            <a class="nav-link" data-i18n="lang" id="langSwitch"></a>
+        </li>
+    </ul>
+{% endblock navtabs %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center; align-items: center; height: 110vh;">
+        <div data-bs-theme="dark" style="min-width: 40%; max-width: 50%; color: #fffcf8; box-shadow: 0 0 15px #f0f8ff; background-color: #212529; padding: 2rem; border-radius: 10px;"> 
+            <div class="text-center" style="padding-top: 2%; padding-bottom: 4%;">
+                <h1 style="padding-top: 2%;" data-i18n="userWelcomeHeader"></h1>
+                <p class="h4" data-i18n="userSecondHeader"></p>
+            </div>
+            <h3 style="padding: 5% 0 0 5%;" data-i18n="userUserdataHeader"></h3>
+            <div style="border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 20px; padding:2% 5% 2% 5%; margin-bottom: 3%;">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control-plaintext" id="Username-Input-userp" value="{{ username }}" style="font-size: 18px; border-bottom-color: #fffcf8;">
+                    <label for="Username-Input-userp" data-i18n="userUsernameLabel"></label> 
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control-plaintext" id="Password-Input-userp" value="{{ password }}" style="font-size: 18px; border-bottom-color: #fffcf8;">
+                    <label for="Password-Input-userp" data-i18n="userPasswordLabel"></label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-secondary btn-md disabled" id="cancelUserdataButton" style="margin-right: 2%;" data-i18n="userUserdataCancel"></button>
+                <button class="btn btn-outline-primary btn-md disabled" id="editUserdataButton" data-i18n="userUserdataSave"></button>
+            </div>
+            <h3 style="padding: 5% 0 0 5%;" data-i18n="userDangerzoneHeader"></h3>
+            <div style="border: 2px solid rgba(255, 255, 255, 0.5); box-shadow: 0 0 5px #ff0000; border-radius: 20px; padding:5% 5% 4% 5%; margin-bottom: 2%;">
+                <div class="container" style="margin-bottom: 3%;">
+                    <a class="btn btn-danger btn-md" href="/logout">Logout</a>
+                </div>
+                <div class="container">
+                    <a class="btn btn-danger btn-md disabled" id="userDeleteButton" data-i18n="userDangerzoneDelete" href="/user/delete">Delete Account</a>
+                    <input type="text" class="form-control-plaintext" id="userDeleteInput" value="" style="font-size: 18px; border-bottom-color: #fffcf8;" placeholder="'SecNote {{username}}'">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block jscripts %}
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/language.js') }}"></script>
+{% endblock jscripts %}

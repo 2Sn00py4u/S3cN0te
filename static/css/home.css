@@ -1,0 +1,74 @@
+body {
+    background-color: #080d11;
+}
+
+.list-group-horizontal {
+    align-items: stretch;
+}
+
+.list-group-horizontal .list-group-item {
+    width: 100%;
+    height: 100%;
+}
+
+.list-group-horizontal .list-group-item:first-child {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-frame {
+    width: 30%; 
+    height: 95%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 2rem; 
+    gap: 2rem;  
+    border-radius: 10px;
+    color: #fffcf8; 
+    background-color: transparent; 
+}
+
+.page-frame {
+    flex: 1; 
+    display: flex; 
+    width: 65%; 
+    height: 95%;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    align-items: center;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    padding-block: calc((100vh - 500px) / 2);
+}
+
+.page {
+    aspect-ratio: 16 / 9;
+    width: 90%;
+    max-width: 1920px;
+    flex-shrink: 0;
+    color: #fffcf8; 
+    box-shadow: 0 0 15px #f0f8ff; 
+    background-color: #212529; 
+    padding: 2rem; 
+    border-radius: 10px;
+    scroll-snap-align: center;
+    margin-bottom: 5%;
+}
+
+.page:last-child {
+    margin-bottom: 0;
+}
+
+#create-new-note-header {
+    color: #bbb8c2;
+    font-family: system-ui, sans-serif;
+    font-style: italic;
+    animation: l1 1s linear infinite alternate;
+}
+#create-new-note-header:before {
+    content:"# SecNote...";
+}
+@keyframes l1 {to{opacity: 0}}

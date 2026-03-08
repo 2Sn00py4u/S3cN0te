@@ -1,0 +1,8 @@
+playwright
+pandas
+duckdb
+pypdf
+pycryptodome
+flask
+secrets
+string
