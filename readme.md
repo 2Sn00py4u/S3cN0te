@@ -17,18 +17,35 @@ Additionally, you can convert these slide-like notes into presentable file forma
 Download the [latest released](https://github.com/2Sn00py4u/S3cN0te/releases) binary or install via ``python -m venv``:  
 > Note use Python >= 3.12.5
 
+### Mac/Linux
+
 ```bash
-python -m venv .venv
-
-# Mac/Linux
+# virtual environment
+python3 -m venv .venv
 source .venv/bin/activate
-# Aktivieren auf Windows
-& .venv\Scripts\Activate.ps1
 
-python -m pip install -r requirements.txt
+# install requirements
+python3 -m pip install -r requirements.txt
 
+# install playwright
 playwrigth install
 ```
+
+### Windows
+
+```ps1
+# virtual environment
+python.exe -m venv .venv
+& .venv\Scripts\Activate.ps1
+
+# install requirements
+python.exe -m pip install -r requirements.txt
+
+# install playwright
+playwrigth install
+```
+
+Or just download the latest release .zip file
 
 ## Usage
 

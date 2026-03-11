@@ -4,5 +4,4 @@ duckdb
 pypdf
 pycryptodome
 flask
-secrets
-string
+flask_session
